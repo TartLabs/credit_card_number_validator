@@ -13,15 +13,13 @@ class _MyApp extends State<MyApp> {
   TextEditingController _cardNumberController = TextEditingController();
 
   // Declare Variables To Store Card Type and Validity
-  String cardType;
-  bool isValid = false;
+  String? cardType;
+  bool? isValid = false;
 
   // Initial State
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     // Set A Sample Card Value - VISA Card
     _cardNumberController.text = "4111111111111111";
   }
@@ -67,10 +65,11 @@ class _MyApp extends State<MyApp> {
             ),
             Container(
               height: 55,
-              child: RaisedButton(
-                color: Colors.blue,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(5)))),
                 child: Text('Get Card Data',
                     style: TextStyle(color: Colors.white, fontSize: 18.0)),
                 onPressed: () {
@@ -91,7 +90,7 @@ class _MyApp extends State<MyApp> {
                   // Display Card Type and Validity
                   ? Text('Card Type : $cardType \nCard Number Valid: $isValid',
                       style: TextStyle(
-                          color: isValid ? Colors.green : Colors.red,
+                          color: isValid! ? Colors.green : Colors.red,
                           fontSize: 14.0,
                           fontWeight: FontWeight.w800))
                   : Text(' \n '),
